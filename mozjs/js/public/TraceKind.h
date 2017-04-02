@@ -165,7 +165,7 @@ template <> struct MapTypeToRootKind<JSFunction*> : public MapTypeToRootKind<JSO
 // the other hand, gets very confused if we have a |template| token there.
 // The clang-cl front end defines _MSC_VER, but still requires the explicit
 // template declaration, so we must test for __clang__ here as well.
-#if defined(_MSC_VER) && !defined(__clang__)
+#if defined(_MSC_VER) && (_MSC_VER <= 1900) && !defined(__clang__)
 # define JS_DEPENDENT_TEMPLATE_HINT
 #else
 # define JS_DEPENDENT_TEMPLATE_HINT template
